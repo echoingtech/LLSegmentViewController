@@ -13,6 +13,8 @@ public class LLSegmentItemTitleViewStyle: LLSegmentItemBadgeViewStyle {
     public var unSelectedColor = UIColor.init(red: 136/255.0, green: 136/255.0, blue: 136/255.0, alpha: 1)
     public var selectedTitleScale: CGFloat = 1.2
     public var titleFontSize: CGFloat = 12
+    public var selectedFont: UIFont?
+    public var titleFont: UIFont?
     public var extraTitleSpace: CGFloat = 10
     public var titleLabelMaskEnabled = false
     public var titleLabelMaskColor = UIColor.red
@@ -82,7 +84,9 @@ open class LLSegmentItemTitleView: LLSegmentItemBadgeView {
         super.setSegmentItemViewStyle(itemViewStyle: itemViewStyle)
         if let itemViewStyle = itemViewStyle as? LLSegmentItemTitleViewStyle {
             self.itemTitleViewStyle = itemViewStyle
+            titleLabel.font = itemViewStyle.titleFont ?? UIFont.boldSystemFont(ofSize: itemViewStyle.titleFontSize)
             titleLabel.textColor = itemViewStyle.unSelectedColor
+            maskTitleLabel.font = itemViewStyle.titleFont ?? UIFont.boldSystemFont(ofSize: itemViewStyle.titleFontSize)
             maskTitleLabel.textColor = itemViewStyle.titleLabelMaskColor
         }
     }
@@ -94,7 +98,7 @@ extension LLSegmentItemTitleView {
         let percentConvert = self.percentConvert()
         titleLabel.textColor = interpolationColorFrom(fromColor: itemTitleViewStyle.unSelectedColor, toColor: itemTitleViewStyle.selectedColor, percent: percentConvert)
         let scale = 1 + (itemTitleViewStyle.selectedTitleScale - 1)*percentConvert
-        let font = UIFont.boldSystemFont(ofSize: itemTitleViewStyle.titleFontSize * scale)
+        let font = (isSelected ? itemTitleViewStyle.selectedFont : itemTitleViewStyle.titleFont) ?? UIFont.boldSystemFont(ofSize: itemTitleViewStyle.titleFontSize * scale)
         titleLabel.font = font
         titleLabel.sizeToFit()
         titleLabel.center = CGPoint.init(x: bounds.width/2, y: bounds.height/2 + itemTitleViewStyle.titleLabelCenterOffsetY)
