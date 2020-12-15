@@ -98,7 +98,7 @@ extension LLSegmentItemTitleView {
         let percentConvert = self.percentConvert()
         titleLabel.textColor = interpolationColorFrom(fromColor: itemTitleViewStyle.unSelectedColor, toColor: itemTitleViewStyle.selectedColor, percent: percentConvert)
         let scale = 1 + (itemTitleViewStyle.selectedTitleScale - 1)*percentConvert
-        let font = (isSelected ? itemTitleViewStyle.selectedFont : itemTitleViewStyle.titleFont) ?? UIFont.boldSystemFont(ofSize: itemTitleViewStyle.titleFontSize * scale)
+        let font = itemTitleViewStyle.selectedFont ?? UIFont.boldSystemFont(ofSize: itemTitleViewStyle.titleFontSize * scale)
         titleLabel.font = font
         titleLabel.sizeToFit()
         titleLabel.center = CGPoint.init(x: bounds.width/2, y: bounds.height/2 + itemTitleViewStyle.titleLabelCenterOffsetY)
