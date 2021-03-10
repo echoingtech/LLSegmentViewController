@@ -58,7 +58,7 @@ open class LLSegmentItemTitleView: LLSegmentItemBadgeView {
     override open func layoutSubviews() {
         super.layoutSubviews()
         titleLabel.sizeToFit()
-        titleLabel.center = CGPoint.init(x: bounds.width/2 + itemTitleViewStyle.extraTitleSpace, y: bounds.height/2 + itemTitleViewStyle.titleLabelCenterOffsetY)
+        titleLabel.center = CGPoint.init(x: bounds.width/2, y: bounds.height/2 + itemTitleViewStyle.titleLabelCenterOffsetY)
         
         maskTitleLabel.sizeToFit()
         maskTitleLabel.center = titleLabel.center
