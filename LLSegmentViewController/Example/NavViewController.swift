@@ -45,7 +45,7 @@ extension NavViewController{
         itemStyle.selectedColor = UIColor.init(red: 50/255.0, green: 50/255.0, blue: 50/255.0, alpha: 1)
         itemStyle.unSelectedColor = UIColor.init(red: 136/255.0, green: 136/255.0, blue: 136/255.0, alpha: 1)
         itemStyle.selectedTitleScale = 1
-        itemStyle.titleFontSize = 15
+//        itemStyle.titleFontSize = 15
         itemStyle.itemWidth = 100//如果不指定是自动适配的
         //这里可以继续增加itemStyle的其他配置项... ...
         

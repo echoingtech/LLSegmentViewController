@@ -45,7 +45,7 @@ class PersonDetailViewController: LLSegmentViewController {
         let contentInset = UIEdgeInsets.init(top: 0, left: 30, bottom: 0, right: 30)
         let itemStyle = LLSegmentItemTitleViewStyle()
         itemStyle.itemWidth = (UIScreen.main.bounds.width - contentInset.left - contentInset.right)/CGFloat(ctls.count)
-        itemStyle.titleFontSize = 15
+//        itemStyle.titleFontSize = 15
         
         var segmentCtlStyle = LLSegmentedControlStyle()
         segmentCtlStyle.contentInset = contentInset

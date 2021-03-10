@@ -90,7 +90,7 @@ open class LLSegmentItemTitleImageView: LLSegmentItemBadgeView {
     }
     
     private func getLayoutInfo(model: LLTitleImageModel) -> (titleLabelFrame: CGRect, imageViewFrame: CGRect, contentSize: CGSize) {
-        let titleLabelSize = model.title.LLGetStrSize(font: titleLabelFontSize, w: 1000, h: 1000)
+        let titleLabelSize = model.title.LLGetStrSize(fontSize: titleLabelFontSize, w: 1000, h: 1000)
         let imgViewSize = model.imgViewSize
         var contentWidth: CGFloat = 0
         var contentHeight: CGFloat = 0

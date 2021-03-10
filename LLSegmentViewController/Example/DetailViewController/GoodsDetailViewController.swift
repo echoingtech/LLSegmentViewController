@@ -46,7 +46,7 @@ class GoodsDetailViewController: LLSegmentViewController {
     func setUpSegmentStyle() {
         let itemStyle = LLSegmentItemTitleViewStyle()
         itemStyle.extraTitleSpace = 10
-        itemStyle.titleFontSize = 15
+//        itemStyle.titleFontSize = 15
         
         var segmentCtlStyle = LLSegmentedControlStyle()
         segmentCtlStyle.segmentItemViewClass = LLSegmentItemTitleView.self

@@ -79,9 +79,14 @@ fileprivate func pointToPointDistanceWithPoint(point1: CGPoint, point2: CGPoint)
 }
 
 extension String {
-    internal func LLGetStrSize(font: CGFloat, w: CGFloat, h: CGFloat) -> CGSize {
-        let strSize = (self as NSString).boundingRect(with: CGSize(width: w, height: h), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: font)], context: nil).size
+    
+    internal func LLGetStrSize(font: UIFont, w: CGFloat, h: CGFloat) -> CGSize {
+        let strSize = (self as NSString).boundingRect(with: CGSize(width: w, height: h), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil).size
         return strSize
+    }
+    
+    internal func LLGetStrSize(fontSize: CGFloat, w: CGFloat, h: CGFloat) -> CGSize {
+        return LLGetStrSize(font: UIFont.systemFont(ofSize: fontSize), w: w, h: h)
     }
 }
 
