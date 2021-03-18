@@ -12,10 +12,10 @@ public class LLSegmentItemTitleViewStyle: LLSegmentItemBadgeViewStyle {
     public var selectedColor = UIColor.init(red: 50/255.0, green: 50/255.0, blue: 50/255.0, alpha: 1)
     public var unSelectedColor = UIColor.init(red: 136/255.0, green: 136/255.0, blue: 136/255.0, alpha: 1)
     public var selectedTitleScale: CGFloat = 1.2
-    public var titleFontSize: CGFloat {
+    private(set) var titleFontSize: CGFloat {
         set {
             selectedFont = UIFont.boldSystemFont(ofSize: newValue)
-            titleFont = UIFont.boldSystemFont(ofSize: newValue)
+            titleFont = UIFont.systemFont(ofSize: newValue)
         }
         get {
             return titleFont.pointSize
@@ -46,7 +46,7 @@ open class LLSegmentItemTitleView: LLSegmentItemBadgeView {
         maskTitleLabelMask.backgroundColor = UIColor.red.cgColor
         maskTitleLabel.layer.mask = maskTitleLabelMask
         addSubview(maskTitleLabel)
-    
+
         badgeValueLabelLocationView = maskTitleLabel
         self.bringSubviewToFront(badgeValueLabel)
     }
@@ -92,7 +92,6 @@ open class LLSegmentItemTitleView: LLSegmentItemBadgeView {
         super.setSegmentItemViewStyle(itemViewStyle: itemViewStyle)
         if let itemViewStyle = itemViewStyle as? LLSegmentItemTitleViewStyle {
             self.itemTitleViewStyle = itemViewStyle
-            titleLabel.font = itemViewStyle.titleFont
             titleLabel.textColor = itemViewStyle.unSelectedColor
             maskTitleLabel.font = itemViewStyle.titleFont
             maskTitleLabel.textColor = itemViewStyle.titleLabelMaskColor
