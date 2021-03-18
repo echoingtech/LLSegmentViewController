@@ -57,6 +57,11 @@ open class LLSegmentedControl: UIView {
             bottomSeparatorLineView.backgroundColor = bottomSeparatorStyle.color
         }
     }
+    public var isCard: Bool = false {
+        didSet {
+            cardLayer.isHidden = isCard
+        }
+    }
     
     //----------------------private-----------------------//
     private let associateScrollerViewObserverKeyPath = "contentOffset"
@@ -71,10 +76,33 @@ open class LLSegmentedControl: UIView {
             associateScrollerView?.addObserver(self, forKeyPath: associateScrollerViewObserverKeyPath, options: [.new, .old], context: nil)
         }
     }
+    
+    // card
+    private lazy var cardLayer: CALayer = {
+        let layer = CALayer()
+        if #available(iOS 11.0, *) {
+            layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        } else {
+            // Fallback on earlier versions
+        }
+        layer.backgroundColor = UIColor.white.cgColor
+        layer.cornerRadius = 15
+        layer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 45)
+        return layer
+    }()
+    
+    
     init(frame: CGRect, titles: [String]) {
         super.init(frame: frame)
+        layer.addSublayer(cardLayer)
+        cardLayer.isHidden = true
         self.titles = titles
         initSubviews()
+    }
+    
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        cardLayer.frame = bounds
     }
     
     required public init?(coder aDecoder: NSCoder) {
